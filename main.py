@@ -1,5 +1,7 @@
 import pygame
 
+from pygame.time import Clock
+
 from constants import *
 
 def main():
@@ -17,6 +19,10 @@ def main():
 	# Get a new GUI window
 	screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
 
+	# Get a timer
+	clock = Clock()
+	delta = 0
+
 	while True:
 
 		# Check for system messages
@@ -29,6 +35,9 @@ def main():
 
 		# Refresh the screen
 		pygame.display.flip()
+
+		# Limit our FPS and track the delta time in seconds
+		delta = clock.tick(60) / 1000
 
 # Ensure we only run when executed directly, not when imported as a module:
 if __name__ == "__main__":
