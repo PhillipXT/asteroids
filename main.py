@@ -1,7 +1,5 @@
 import pygame
 
-from pygame.time import Clock
-
 from constants import *
 
 def main():
@@ -19,10 +17,11 @@ def main():
 	# Get a new GUI window
 	screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
 
-	# Get a timer
-	clock = Clock()
+	# Get a timer and set a delta time variable
+	clock = pygame.time.Clock()
 	delta = 0
 
+	# Initiate the game loop
 	while True:
 
 		# Check for system messages
@@ -31,7 +30,7 @@ def main():
 				return
 
 		# Fill the screen with the background colour	
-		screen_rect = screen.fill(BACKGROUND_COLOUR, None, 0)
+		screen.fill(BACKGROUND_COLOUR, None, 0)
 
 		# Refresh the screen
 		pygame.display.flip()
