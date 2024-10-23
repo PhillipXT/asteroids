@@ -22,6 +22,13 @@ def main():
 	clock = pygame.time.Clock()
 	delta = 0
 
+	# Create the groups we'll need
+	updatable = pygame.sprite.Group()
+	drawable = pygame.sprite.Group()
+
+	# Assign objects to groups
+	Player.containers = (updatable, drawable)
+
 	# Instantiate the player
 	player = Player(SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2)
 
@@ -36,9 +43,13 @@ def main():
 		# Fill the screen with the background colour	
 		surface.fill(BACKGROUND_COLOUR, None, 0)
 
-		# Draw the player
-		player.update(delta)
-		player.draw(surface)
+		# Update game objects
+		for u in updatable:
+			u.update(delta)
+
+		# Draw game objects
+		for d in drawable:
+			d.draw(surface)
 
 		# Refresh the screen
 		pygame.display.flip()
