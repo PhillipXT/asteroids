@@ -37,6 +37,7 @@ def main():
 		surface.fill(BACKGROUND_COLOUR, None, 0)
 
 		# Draw the player
+		player.update(delta)
 		player.draw(surface)
 
 		# Refresh the screen
