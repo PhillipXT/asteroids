@@ -36,7 +36,7 @@ def main():
 
 	# Instantiate game objects
 	player = Player(SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2)
-	asteroidField = AsteroidField()
+	asteroid_field = AsteroidField()
 
 	# Initiate the game loop
 	while True:
@@ -52,6 +52,11 @@ def main():
 		# Update game objects
 		for u in updatable:
 			u.update(delta)
+
+		for asteroid in asteroids:
+			if asteroid.collision(player):
+				print("Game over!")
+				return
 
 		# Draw game objects
 		for d in drawable:
