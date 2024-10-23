@@ -1,6 +1,7 @@
 import pygame
 
 from constants import *
+from player import Player
 
 def main():
 
@@ -14,12 +15,15 @@ def main():
 	print (f"Modules passed: {numpass}")
 	print (f"Modules failed: {numfail}")
 
-	# Get a new GUI window
-	screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
+	# Get a new GUI window and set it as the drawing surface
+	surface = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
 
 	# Get a timer and set a delta time variable
 	clock = pygame.time.Clock()
 	delta = 0
+
+	# Instantiate the player
+	player = Player(SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2)
 
 	# Initiate the game loop
 	while True:
@@ -30,7 +34,10 @@ def main():
 				return
 
 		# Fill the screen with the background colour	
-		screen.fill(BACKGROUND_COLOUR, None, 0)
+		surface.fill(BACKGROUND_COLOUR, None, 0)
+
+		# Draw the player
+		player.draw(surface)
 
 		# Refresh the screen
 		pygame.display.flip()
